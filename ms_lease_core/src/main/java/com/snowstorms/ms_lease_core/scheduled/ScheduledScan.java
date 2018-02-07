@@ -1,4 +1,4 @@
-package com.snowstorms.ms_lease_core.Scheduled;
+package com.snowstorms.ms_lease_core.scheduled;
 
 import org.springframework.stereotype.Component;
 /**
