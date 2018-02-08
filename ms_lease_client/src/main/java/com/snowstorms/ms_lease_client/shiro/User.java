@@ -1,4 +1,4 @@
-package domain;
+package com.snowstorms.ms_lease_client.shiro;
 
 import java.io.Serializable;
 import java.util.HashSet;
