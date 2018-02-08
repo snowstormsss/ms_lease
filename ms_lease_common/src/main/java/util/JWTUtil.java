@@ -27,7 +27,7 @@ public class JWTUtil {
      *            the milliseconds of life time
      * @return the jwt token
      */
-    public static <T> String sign(T object, long maxAge) {
+    public static <T> String sign(T object, long maxAge) {  //30L * 24L * 3600L * 1000L
         try {
             final JWTSigner signer = new JWTSigner(SECRET);
             final Map<String, Object> claims = new HashMap<String, Object>();

@@ -33,3 +33,12 @@ spring:
       max-request-size: 20MB
       file-size-threshold: 512KB
       location: /image
+security:
+  user:
+    password: xyc666
+    name: xyc
+    role:
+    - User
+  sessions: stateless
+  basic:
+    enabled: true
