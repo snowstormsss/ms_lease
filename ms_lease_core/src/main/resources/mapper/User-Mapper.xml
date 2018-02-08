@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.snowstorms.ms_lease_core.dao.UserDao">
     <select id="login" resultType="java.lang.Integer">
-        SELECT COUNT (1)
+        SELECT COUNT(0)
         FROM t_user u
         WHERE u.username=#{username}
         AND u.password=#{password}
     </select>
 
     <select id="exist" resultType="java.lang.Integer">
-        SELECT count *
+        SELECT count(*)
         FROM t_user u
         WHERE u.username=#{username}
     </select>

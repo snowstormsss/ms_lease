@@ -23,17 +23,12 @@ public class UserController {
     UserService userService;
 
     @PostMapping(value = "/register")
-    public String register(User user){
-        return user.getUsername()+" "+user.getPassword();
+    public Result register(User user){
+        return userService.register(user);
     }
 
     @PostMapping(value = "/login")
     public Result login(User user){
-        if(user.getUsername().equals("xyc") && user.getPassword().equals("xyc123")){
-            return Result.buildSuccessData("登录成功");
-        }
-        else{
-            return Result.error(HttpStatus.BAD_REQUEST.value(),"账号或密码错误!");
-        }
+        return userService.login(user);
     }
 }

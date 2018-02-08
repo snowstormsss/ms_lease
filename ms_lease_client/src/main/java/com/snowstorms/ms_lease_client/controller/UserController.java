@@ -36,13 +36,13 @@ public class UserController {
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     @ResponseBody
-    public String register() {
+    public Result register() {
         MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
-        requestEntity.add("username", "xyc");
+        requestEntity.add("username", "xyc1");
         requestEntity.add("password", "xyc123");
         String res;
-        res = restTemplate.exchange(BaseContant.BasePrefix + "/register", HttpMethod.POST, new HttpEntity<Object>(requestEntity, this.headers), String.class).getBody();
-        return res;
+        return restTemplate.exchange(BaseContant.BasePrefix + "/register", HttpMethod.POST, new HttpEntity<Object>(requestEntity, this.headers), Result.class).getBody();
+        //return res;
     }
 
     @RequestMapping(value = {"", "/"}, method = RequestMethod.GET)
