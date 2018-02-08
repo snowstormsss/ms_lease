@@ -4,3 +4,6 @@ server:
 spring:
   thymeleaf:
     prefix: classpath:/templates/
+    mode: LEGACYHTML5
+    cache: false
+    content-type: text/html

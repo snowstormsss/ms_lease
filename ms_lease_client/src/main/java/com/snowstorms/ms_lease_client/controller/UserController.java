@@ -37,7 +37,7 @@ public class UserController {
 
     @RequestMapping(value = {"","/"},method = RequestMethod.GET)
     public String index(){    //首页跳登录
-        return "index";
+        return "main";
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
