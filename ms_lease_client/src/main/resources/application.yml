@@ -15,7 +15,7 @@ spring:
       file-size-threshold: 512KB
       location: /image
   datasource:
-    url: jdbc:mysql://localhost:3306/test
+    url: jdbc:mysql://localhost:3306/ms_sale
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
