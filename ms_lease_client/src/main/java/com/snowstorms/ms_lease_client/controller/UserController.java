@@ -35,7 +35,7 @@ public class UserController {
     @Resource
     private HttpHeaders headers;
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
     public Result register(@RequestParam("username") String username, @RequestParam("password") String password){
         MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
@@ -49,7 +49,7 @@ public class UserController {
         return "main";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public Result login(@RequestParam("username") String username, @RequestParam("password") String password) {    //Get方式方便测试
         if (StringUtils.isNotBlank(username) && StringUtils.isNotBlank(password)) {
