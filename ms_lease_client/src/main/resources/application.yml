@@ -2,20 +2,10 @@ server:
   port: 7960
 
 spring:
-  thymeleaf:
-    prefix: classpath:/templates/
-    mode: LEGACYHTML5
-    cache: false
-    content-type: text/html
-  http:
-    multipart:  # 文件上传
-      enabled: true
-      max-file-size: 2MB
-      max-request-size: 20MB
-      file-size-threshold: 512KB
-      location: /image
-  datasource:
-    url: jdbc:mysql://localhost:3306/ms_sale
-    username: root
-    password: admin
-    driver-class-name: com.mysql.jdbc.Driver
+  application:
+    name: clientconfig
+  cloud:
+    config:
+      label: master
+      profile: dev
+      uri: http://127.0.0.1:8888/

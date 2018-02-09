@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
+import util.MD5Util;
 
 import javax.annotation.Resource;
 
@@ -36,13 +37,11 @@ public class UserController {
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     @ResponseBody
-    public Result register() {
+    public Result register(@RequestParam("username") String username, @RequestParam("password") String password){
         MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
-        requestEntity.add("username", "xyc1");
-        requestEntity.add("password", "xyc123");
-        String res;
+        requestEntity.add("username", username);
+        requestEntity.add("password", MD5Util.md5Encode(password));
         return restTemplate.exchange(BaseContant.BasePrefix + "/register", HttpMethod.POST, new HttpEntity<Object>(requestEntity, this.headers), Result.class).getBody();
-        //return res;
     }
 
     @RequestMapping(value = {"", "/"}, method = RequestMethod.GET)
@@ -56,7 +55,7 @@ public class UserController {
         if (StringUtils.isNotBlank(username) && StringUtils.isNotBlank(password)) {
             MultiValueMap<String, String> requestEntity = new LinkedMultiValueMap<>();
             requestEntity.add("username", username);
-            requestEntity.add("password", password);
+            requestEntity.add("password", MD5Util.md5Encode(password));
             return restTemplate.exchange(BaseContant.BasePrefix + "/login", HttpMethod.POST, new HttpEntity<Object>(requestEntity, this.headers), Result.class).getBody();
         } else {
             return Result.error("账号或密码不能为空!");

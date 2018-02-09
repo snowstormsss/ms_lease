@@ -15,6 +15,6 @@
     </select>
 
     <insert id="register">
-        INSERT INTO t_user VALUE ('${username}','${password}')
+        INSERT INTO t_user(username,password) VALUE ('${username}','${password}')
     </insert>
 </mapper>

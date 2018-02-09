@@ -27,7 +27,7 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 6568139093105454505L;
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userid;
+    private String userid;
     @NotEmpty(message = "用户名不能为空")
     private String username;
     @NotEmpty(message = "密码不能为空")
@@ -52,15 +52,23 @@ public class User implements Serializable{
 		this.roleList = roleList;
 	}
 
-    public Integer getUserid() {
-		return userid;
-	}
+    public String getUserid() {
+        return userid;
+    }
 
-	public void setUserid(Integer userid) {
-		this.userid = userid;
-	}
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
 
-	public String getPassword() {
+    public List<User> getCollectionList() {
+        return collectionList;
+    }
+
+    public void setCollectionList(List<User> collectionList) {
+        this.collectionList = collectionList;
+    }
+
+    public String getPassword() {
         return password;
     }
 

@@ -4,6 +4,7 @@ import com.snowstorms.ms_lease_core.dao.UserDao;
 import domain.User;
 import dto.Result;
 import dto.UserDTO;
+import org.hibernate.id.GUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import util.JWTUtil;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @Service
 public class UserService {

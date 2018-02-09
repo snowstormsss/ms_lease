@@ -2,30 +2,6 @@ server:
   port: 7961
 
 spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/ms_sale
-    username: root
-    password: admin
-    driver-class-name: com.mysql.jdbc.Driver
-  redis: #redis
-    host: 127.0.0.1
-    port: 6379
-    password:
-    timeout: 1000
-    database: 0
-    pool:
-      max-active: 10
-      max-idle: 8
-      min-idle: 2
-      max-wait: 100
-  mail:
-    host: smtp.qq.com
-    username: 2488837660@qq.com
-    password: maisoagjksywebjh
-    properties:
-      mail.smtp.auth: true
-      mail.smtp.strttls.enable: true
-      mail.smtp.strttls.required: true
   http:
     multipart:  # 文件上传
       enabled: true
@@ -33,14 +9,24 @@ spring:
       max-request-size: 20MB
       file-size-threshold: 512KB
       location: /image
-security:
-  user:
-    password: xyc666
-    name: xyc
-    role:
-    - User
-  sessions: stateless
-  basic:
-    enabled: true
+  jpa:
+    database: mysql
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+  application:
+    name: application-serverconfig
+  cloud:
+    config:
+      label: master
+      profile: dev
+      uri: http://127.0.0.1:8888/
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml
+
+
+
