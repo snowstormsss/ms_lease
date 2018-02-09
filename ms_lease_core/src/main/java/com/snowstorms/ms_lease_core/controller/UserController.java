@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 /**
  * @author  xieyucheng
@@ -30,5 +31,10 @@ public class UserController {
     @PostMapping(value = "/login")
     public Result login(User user){
         return userService.login(user);
+    }
+
+    @PostMapping(value = "/findByName")
+    public Result findByName(@RequestParam(value = "username")String username){
+        return userService.findByName(username);
     }
 }

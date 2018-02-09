@@ -59,4 +59,13 @@ public class UserService {
     }
 
 
+    public Result findByName(String username) {
+        User user=userDao.findByName(username);
+        if(user!=null){
+            return Result.buildSuccessData(user);
+        }
+        else {
+            return Result.error();
+        }
+    }
 }

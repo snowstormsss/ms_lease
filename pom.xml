@@ -49,5 +49,6 @@
 		<module>ms_lease_client</module>
 		<module>ms_lease_core</module>
 		<module>ms_lease_common</module>
+		<module>ms_lease_configserver</module>
 	</modules>
 </project>

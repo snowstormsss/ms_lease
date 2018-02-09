@@ -17,4 +17,14 @@
     <insert id="register">
         INSERT INTO t_user(username,password) VALUE ('${username}','${password}')
     </insert>
+
+    <select id="findByName" parameterType="java.lang.String" resultType="com.snowstorms.ms_lease_common.domain.User">
+        select *
+        from t_user u,t_user_role ur,t_role r,t_permission p
+        where
+        u.userid=ur.user_id
+        and ur.role_id=r.id
+        and p.role_id=r.id
+        and u.username=#{username}
+    </select>
 </mapper>
