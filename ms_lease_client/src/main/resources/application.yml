@@ -1,11 +1,2 @@
 server:
   port: 7960
-
-spring:
-  application:
-    name: clientconfig
-  cloud:
-    config:
-      label: master
-      profile: dev
-      uri: http://127.0.0.1:8888/
