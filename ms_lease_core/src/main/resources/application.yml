@@ -1,5 +1,5 @@
 server:
-  port: 7961
+  port: 7962
 
 spring:
   http:
@@ -17,9 +17,16 @@ spring:
       ddl-auto: update
       naming:
         strategy: org.hibernate.cfg.ImprovedNamingStrategy
+  application:
+    name: CoreServer
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka/
 
 
 
