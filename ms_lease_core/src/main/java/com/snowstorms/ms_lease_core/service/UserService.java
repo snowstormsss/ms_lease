@@ -10,35 +10,36 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import util.JWTUtil;
 
+import javax.annotation.Resource;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
 
 @Service
 public class UserService {
-    @Autowired
+    @Resource
     UserDao userDao;
 
-    public Result login(User user){
-        int res=userDao.login(user);
+    public Result login(String username,String password){
+        int res=userDao.login(username,password);
         if(res==1){
             Map<String,Object> resMap=new LinkedHashMap<>();
             UserDTO userDTO=new UserDTO();
-            userDTO.setUsername(user.getUsername());
-            userDTO.setPassword(user.getPassword());
+            userDTO.setUsername(username);
+            userDTO.setPassword(password);
             resMap.put("token", JWTUtil.sign(userDTO,24L * 3600L * 1000L)); //1天有效期
             return Result.ok(resMap); //返回验证token
         }
         else return Result.error(HttpStatus.BAD_REQUEST.value(),"登陆失败,账号或密码错误!");
     }
 
-    public Result register(User user){   //用户注册
-        int res=userDao.exist(user);  //先判断是否存在
+    public Result register(String username,String password){   //用户注册
+        int res=userDao.exist(username);  //先判断是否存在
         if(res==1){
             return Result.error("用户名已经存在!");
         }
         else{
-            res=userDao.register(user);
+            res=userDao.register(username,password);
             if(res==1){
                 return Result.ok("注册成功!");
             }
@@ -48,8 +49,8 @@ public class UserService {
         }
     }
 
-    public Result exist(User user){  //判断用户是否存在
-        int res=userDao.login(user);
+    public Result exist(String username){  //判断用户是否存在
+        int res=userDao.exist(username);
         if(res==1){
             return Result.error("用户已经存在!");
         }

@@ -10,11 +10,11 @@ import org.apache.ibatis.annotations.Param;
  **/
 @Mapper
 public interface UserDao {
-    int login(User user);   //用户登录
+    int login(@Param("username")String username,@Param("password")String password);   //用户登录
 
-    int register(User user);    //用户注册
+    int register(@Param("username")String username,@Param("password")String password);    //用户注册
 
-    int exist(User user); //验证用户是否存在
+    int exist(@Param("username")String username); //验证用户是否存在
 
     User findByName(@Param("username") String username); //根据用户名取出用户
 }

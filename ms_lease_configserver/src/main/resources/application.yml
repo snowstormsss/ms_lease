@@ -7,10 +7,8 @@ spring:
       server:
         default-application-name: config-server
         git:
-          uri: https://gitee.com/snowstorms/ConfigHub.git
+          uri: https://github.com/snowstormsss/ConfigHub
           search-paths: ms_lease_config
-          username: snowstorms
-          password: XieYuCheng123
       label: master
   application:
     name: ConfigServer

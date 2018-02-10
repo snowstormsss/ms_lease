@@ -6,5 +6,5 @@ package com.snowstorms.ms_lease_client.contant;
  * @desc  系统常量
  **/
 public interface BaseContant {
-    String BasePrefix = "http://127.0.0.1:7961";
+    String BasePrefix = "http://127.0.0.1:7962";
 }

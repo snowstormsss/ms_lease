@@ -7,10 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import util.MD5Util;
+
 /**
  * @author  xieyucheng
  * @create  2018/2/7 15:30
@@ -23,18 +22,20 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @PostMapping(value = "/register")
-    public Result register(User user){
-        return userService.register(user);
+    @PostMapping(value = "/register/{username}/{password}")
+    Result register(@PathVariable("username")String username, @PathVariable("password")String password){
+        logger.info("port:"+"${server.port}");
+        return userService.register(username,MD5Util.md5Encode(password));
     }
 
-    @PostMapping(value = "/login")
-    public Result login(User user){
-        return userService.login(user);
+    @PostMapping(value = "/login/{username}/{password}")
+    Result login(@PathVariable("username")String username,@PathVariable("password")String password){
+        return userService.login(username, MD5Util.md5Encode(password));
     }
 
-    @PostMapping(value = "/findByName")
-    public Result findByName(@RequestParam(value = "username")String username){
+    @PostMapping(value = "/findByName/{username}")
+    Result findByName(@PathVariable("username") String username){
         return userService.findByName(username);
     }
+
 }
